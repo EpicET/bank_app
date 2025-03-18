@@ -1,9 +1,5 @@
-/* eslint-disable react/prop-types */
 import React from "react";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
+import { Button, Card, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function AccList({ userID, accList }) {

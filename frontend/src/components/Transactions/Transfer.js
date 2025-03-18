@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import api from "../../api/axiosConfig";
 
 export default function Transfer(props) {
-  const { userID } = useParams();
+  const { user } = useParams();
   const [amount, setAmount] = useState(0);
   const [accountID1, setAccountID1] = useState(0);
   const [accountID2, setAccountID2] = useState(0);
@@ -23,14 +23,14 @@ export default function Transfer(props) {
     setLoading(true);
     api
       .put(
-        `/api/v1/user/${userID}/${accountID1}/${accountID2}`,
+        `/api/v1/user/${user.userID}/${accountID1}/${accountID2}`,
         transferAmmount,
         { headers: { "Content-Type": "application/json" } }
       )
       .then((response) => {
-        //console.log(response.data);
+        console.log(response.data);
         setAmount(0);
-        props.updateUser(props.getUser());
+        props.updateUser(user);
         setError(null);
 
         setLoading(false);

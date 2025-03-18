@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import React from "react";
 import { Accordion, Button, Card, ListGroup } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
-export default function OpenAccount({ userID, openAcc }) {
+export default function OpenAccount({ openAcc }) {
   function CustomToggle({ children, eventKey }) {
     const decoratedOnClick = useAccordionButton(eventKey, () =>
       console.log("It worked!")

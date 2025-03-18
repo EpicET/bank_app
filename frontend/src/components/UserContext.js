@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { createContext, useState, useEffect } from "react";
 import api from "../api/axiosConfig";
 
@@ -13,7 +12,7 @@ export const UserContextProvider = ({ userData, children }) => {
         .get(`/api/v1/user/${userData.userID}`)
         .then((response) => {
           setUser(response.data);
-          console.log(user);
+          console.log(response.data);
         })
         .catch((error) => {
           console.error(error);

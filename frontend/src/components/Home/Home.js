@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
@@ -12,7 +11,6 @@ import PieChart from "./PieChart";
 
 const Home = () => {
   const [user, setUser] = useState([]);
-
   const { userID } = useParams();
   const [password, setPassword] = useState();
   const [accList, setAccList] = useState([]);
@@ -32,18 +30,19 @@ const Home = () => {
       });
   }
 
-  const getUser = () => {
-    api
-      .get(`/api/v1/user/${userID}`)
-      .then((response) => {
-        setUser(response.data);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
 
   useEffect(() => {
+    const getUser = () => {
+      api
+        .get(`/api/v1/user/${userID}`)
+        .then((response) => {
+          setUser(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    };
+
     getUser();
   }, [userID]);
 
@@ -76,7 +75,7 @@ const Home = () => {
             </Card>
           </Col>
           <Col key={2}>
-            <Transfer user={user} getUser={getUser} updateUser={updateUser} />
+            <Transfer user={user} updateUser={updateUser} />
           </Col>
           <Col key={3}>
             <Card style={{ width: "32rem" }} className="mb-2">
