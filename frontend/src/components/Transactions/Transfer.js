@@ -1,11 +1,6 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
+import { Button, Card, Col, Form, Row, Alert } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import { Alert } from "react-bootstrap";
 import api from "../../api/axiosConfig";
 
 export default function Transfer(props) {

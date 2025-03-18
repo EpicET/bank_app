@@ -1,16 +1,8 @@
 import React, { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 import api from "../../api/axiosConfig";
+import { Alert, Button, Form, Tab, Tabs, Card, Col, Row } from "react-bootstrap";
 
-import { Alert } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import { Tab, Tabs } from "react-bootstrap";
 
 const AccountBox = () => {
   const [userID, setUserID] = useState("");

@@ -1,10 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react";
-
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { Button, Modal } from "react-bootstrap";
 import api from "../../api/axiosConfig";
 
 export default function DeleteAccount(props) {

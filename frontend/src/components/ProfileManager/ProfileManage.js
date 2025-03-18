@@ -1,8 +1,5 @@
 import { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import ListGroup from "react-bootstrap/ListGroup";
-import Modal from "react-bootstrap/Modal";
+import { Button, Modal, Offcanvas, ListGroup } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/axiosConfig";
 

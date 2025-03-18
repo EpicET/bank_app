@@ -1,10 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from "react";
-import { Accordion } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
+import { Accordion, Button, Card, ListGroup } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 
 export default function OpenAccount({ userID, openAcc }) {
   function CustomToggle({ children, eventKey }) {

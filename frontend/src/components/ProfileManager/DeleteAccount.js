@@ -1,10 +1,6 @@
 import { useState } from "react";
-
-import { Alert } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import api from "..//api/axiosConfig";
-import Modal from "react-bootstrap/Modal";
-
+import { Button, Modal, Alert } from "react-bootstrap";
+import api from "../../api/axiosConfig";
 import { useNavigate } from "react-router-dom";
 
 export default function DeleteAccount({ userID }) {

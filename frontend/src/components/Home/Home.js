@@ -1,17 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Card, Col, Container, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import Transfer from "../Transactions/Transfer";
 import { api } from "../../api/axiosConfig";
-import PieChart from "./PieChart";
+import Transfer from "../Transactions/Transfer";
 import AccList from "./AccList";
-import OpenAccount from "./OpenAccount";
-import "./Home.css";
 import Header from "./Header";
+import "./Home.css";
+import OpenAccount from "./OpenAccount";
+import PieChart from "./PieChart";
 
 const Home = () => {
   const [user, setUser] = useState([]);

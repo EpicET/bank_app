@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import api from "../../api/axiosConfig";
-import { Alert } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+import { Button, Form, Row, Col, Alert } from "react-bootstrap";
 
 export default function Withdraw(props) {
   const [amount, setAmount] = useState(0);

@@ -1,23 +1,14 @@
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import Deposit from "../Transactions/Deposit";
-import Withdraw from "../Transactions/Withdraw";
-import { Accordion } from "react-bootstrap";
-import Container from "react-bootstrap/Container";
-import { Nav } from "react-bootstrap";
-import { Navbar } from "react-bootstrap";
-import Button from "react-bootstrap/Button";
-import { useAccordionButton } from "react-bootstrap/AccordionButton";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import Row from "react-bootstrap/Row";
-import { useNavigate } from "react-router-dom";
-import Table from "react-bootstrap/Table";
-import CloseAccount from "./CloseAccount";
+import React, { useEffect, useState } from "react";
+import { Accordion, useAccordionButton } from "react-bootstrap";
+import { Button, Card, Col, Container, Nav, Navbar, Row, Table } from "react-bootstrap";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../../api/axiosConfig";
 import "../Home/Home.css";
-import LineChart from "./LineChart";
+import Deposit from "../Transactions/Deposit";
+import Withdraw from "../Transactions/Withdraw";
+import CloseAccount from "./CloseAccount";
+import LineChart from "./LineChart"
 
 const Account = () => {
   const { userID } = useParams();
