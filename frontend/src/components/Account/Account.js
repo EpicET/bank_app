@@ -76,7 +76,7 @@ const Account = () => {
         }
       });
     }
-  }, [account]);
+  }, [account, transHistory]);
 
   return (
     <div className="Home">

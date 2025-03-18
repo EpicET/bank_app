@@ -1,14 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { createContext, useState, useEffect } from "react";
 import api from "../api/axiosConfig";
 
 export const UserContext = createContext();
 
 export const UserContextProvider = ({ userData, children }) => {
-  // const [user, setUser] = useState({
-  //   userID: userData.userID,
-  //   password: userData.password,
-  //   accList: [],
-  // });
   const [user, setUser] = useState(null);
 
   useEffect(() => {

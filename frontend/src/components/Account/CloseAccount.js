@@ -20,7 +20,7 @@ export default function DeleteAccount(props) {
     api
       .delete(`/api/v1/user/${userID}/${accountID}/close`)
       .then((response) => {
-        //console.log(response.data);
+        console.log(response.data);
       })
       .catch((error) => {
         console.error(error);

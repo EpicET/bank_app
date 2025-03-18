@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Container from "react-bootstrap/Container";
@@ -11,8 +12,6 @@ import AccList from "./AccList";
 import OpenAccount from "./OpenAccount";
 import "./Home.css";
 import Header from "./Header";
-
-// import Exchange from "../Exchange/Exchange";
 
 const Home = () => {
   const [user, setUser] = useState([]);
@@ -88,11 +87,6 @@ const Home = () => {
           <Col key={3}>
             <Card style={{ width: "32rem" }} className="mb-2">
               <PieChart accounts={accList} />
-            </Card>
-          </Col>
-          <Col key={4}>
-            <Card border="dark" className="mb-2">
-              {/* <Exchange /> */}
             </Card>
           </Col>
         </Row>

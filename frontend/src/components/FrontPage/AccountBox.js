@@ -16,7 +16,6 @@ const AccountBox = () => {
   const [userID, setUserID] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [createError, setCreateError] = useState(null);
   const [loginError, setLoginError] = useState(null);
