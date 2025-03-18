@@ -5,8 +5,4 @@ export const api = axios.create({
   
 });
 
-export const exchange = axios.create({
-  baseURL: "https://v6.exchangerate-api.com/",
-});
-
 export default api;
