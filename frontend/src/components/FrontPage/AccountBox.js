@@ -16,7 +16,6 @@ const AccountBox = () => {
   const [userID, setUserID] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
   const [createError, setCreateError] = useState(null);
   const [loginError, setLoginError] = useState(null);
 
@@ -27,19 +26,15 @@ const AccountBox = () => {
       password: password,
     };
 
-    setLoading(true);
-
     api
       .post(`/api/v1/user/register`, userData)
       .then((response) => {
         console.log(response);
-        setLoading(false);
         navigate(`/home/${userData.userID}`);
       })
       .catch((error) => {
         setCreateError("Account already exists.");
         console.error(error);
-        setLoading(false);
       });
 
     setUserID("");
@@ -53,19 +48,15 @@ const AccountBox = () => {
       password: password,
     };
 
-    setLoading(true);
-
     api
       .post(`/api/v1/user/login`, userData)
       .then((response) => {
         console.log(response);
-        setLoading(false);
         navigate(`/home/${userData.userID}`);
       })
       .catch((error) => {
         setLoginError("Account userID or password is incorrect.");
         console.error(error);
-        setLoading(false);
       });
 
     setUserID("");

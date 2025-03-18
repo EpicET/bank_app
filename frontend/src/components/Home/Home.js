@@ -19,7 +19,6 @@ const Home = () => {
   const { userID } = useParams();
   const [password, setPassword] = useState();
   const [accList, setAccList] = useState([]);
-  const [accNum, setAccNum] = useState();
 
   const updateUser = (updatedUser) => {
     setUser(updatedUser);
@@ -60,8 +59,6 @@ const Home = () => {
           setPassword(value);
         } else if (key === "accountList") {
           setAccList(value);
-        } else if (key === "numOfAccounts") {
-          setAccNum(value);
         }
       });
     }

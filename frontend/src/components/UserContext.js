@@ -23,10 +23,6 @@ export const UserContextProvider = ({ userData, children }) => {
     getUser();
   }, [userData.userID]);
 
-  const contextValue = {
-    user,
-  };
-
   const updateUser = (updatedUser) => {
     setUser(updatedUser);
   };

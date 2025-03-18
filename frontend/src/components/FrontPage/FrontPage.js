@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import { UserContextProvider } from "../UserContext";
@@ -6,8 +6,8 @@ import AccountBox from "./AccountBox";
 import "./FrontPage.css";
 
 const FrontPage = () => {
-  const [userID, setUserID] = useState("");
-  const [password, setPassword] = useState("");
+  let userID = ""
+  let password = ""
 
   return (
     <UserContextProvider userData={{ userID, password }}>
