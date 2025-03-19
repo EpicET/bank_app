@@ -4,7 +4,6 @@ import AccountBox from "./AccountBox";
 import "./FrontPage.css";
 
 const FrontPage = () => {
-  // Removed unused variables userID and password
 
   return (
     

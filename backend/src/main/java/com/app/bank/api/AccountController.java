@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.app.bank.model.Account;
 import com.app.bank.service.AccountService;
 
-@CrossOrigin()
+@CrossOrigin("*")
 @RequestMapping("api/v1/user/{userID}")
 @RestController
 
