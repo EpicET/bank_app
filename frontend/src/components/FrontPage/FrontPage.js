@@ -9,7 +9,7 @@ const FrontPage = () => {
   let password = ""
 
   return (
-    <UserContextProvider userData={{ userID, password }}>
+    
       <div className="FrontPage">
         <div className="FrontPage-header">
           <h1 className="md-3">Bank Application</h1>
@@ -24,7 +24,7 @@ const FrontPage = () => {
           </Row>
         </Container>
       </div>
-    </UserContextProvider>
+  
   );
 };
 
