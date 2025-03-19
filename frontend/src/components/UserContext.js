@@ -1,33 +1,58 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../api/axiosConfig";
 
 export const UserContext = createContext();
 
-export const UserContextProvider = ({ userData, children }) => {
-  const [user, setUser] = useState(null);
+export const UserContextProvider = ({ children }) => {
+  const [user, setUser] = useState({});
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    const getUser = () => {
-      api
-        .get(`/api/v1/user/${userData.userID}`)
-        .then((response) => {
-          setUser(response.data);
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    };
+  const getUser = async (userID) => {
+    try {
+      const response = await api.get(`/api/v1/user/${userID}`);
+      setUser(response.data);
+      console.log(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-    getUser();
-  }, [userData.userID]);
+  const login = async (userID, password) => {
+    try {
+      const response = await api.post(`/api/v1/user/login`, { userID, password });
+      console.log(response.data); // response.data is a string 
+      await getUser(userID); 
+      setError(null); 
+      navigate(`/home/${userID}`);
+    } catch (err) {
+      setError("Invalid credentials");
+      console.error("Login error:", err);
+    }
+  };
+
+  const register = async (userID, password) => {
+    try {
+      const response = await api.post(`/api/v1/user/register`, { userID, password });
+      console.log(response.data); // response.data is a string 
+      await getUser(userID); 
+      setError(null); 
+      navigate(`/home/${userID}`);
+    } catch (err) {
+      setError("Account already exists.");
+      console.error("Registration error:", err);
+    }
+  };
+
+  
 
   const updateUser = (updatedUser) => {
     setUser(updatedUser);
   };
 
   return (
-    <UserContext.Provider value={{ user, updateUser }}>
+    <UserContext.Provider value={{  user, login, register, updateUser, error }}>
       {children}
     </UserContext.Provider>
   );

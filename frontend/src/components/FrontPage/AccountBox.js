@@ -1,59 +1,22 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import api from "../../api/axiosConfig";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../UserContext";
 import { Alert, Button, Form, Tab, Tabs, Card, Col, Row } from "react-bootstrap";
 
-
 const AccountBox = () => {
+  const { login, register, error } = useContext(UserContext);
   const [userID, setUserID] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-  const [createError, setCreateError] = useState(null);
-  const [loginError, setLoginError] = useState(null);
 
   const handleCreate = (event) => {
     event.preventDefault();
-    const userData = {
-      userID: userID,
-      password: password,
-    };
-
-    api
-      .post(`/api/v1/user/register`, userData)
-      .then((response) => {
-        console.log(response);
-        navigate(`/home/${userData.userID}`);
-      })
-      .catch((error) => {
-        setCreateError("Account already exists.");
-        console.error(error);
-      });
-
-    setUserID("");
-    setPassword("");
+    register(userID, password);
   };
 
   const handleLog = (event) => {
     event.preventDefault();
-    const userData = {
-      userID: userID,
-      password: password,
-    };
-
-    api
-      .post(`/api/v1/user/login`, userData)
-      .then((response) => {
-        console.log(response);
-        navigate(`/home/${userData.userID}`);
-      })
-      .catch((error) => {
-        setLoginError("Account userID or password is incorrect.");
-        console.error(error);
-      });
-
-    setUserID("");
-    setPassword("");
+    login(userID, password);
   };
+
   return (
     <Card style={{ width: "35rem" }} bg="secondary" text="light">
       <Card.Body>
@@ -61,79 +24,43 @@ const AccountBox = () => {
           <Tab eventKey="create" title="Create Account">
             <Form>
               <Form.Group as={Row} className="mb-3 justify-content-md-center">
-                <Form.Label column sm={6}>
-                  Enter userID:
-                </Form.Label>
+                <Form.Label column sm={6}>Enter userID:</Form.Label>
                 <Col>
-                  <Form.Control
-                    value={userID}
-                    onChange={(e) => setUserID(e.target.value)}
-                  />
+                  <Form.Control value={userID} onChange={(e) => setUserID(e.target.value)} />
                 </Col>
               </Form.Group>
 
               <Form.Group as={Row} className="mb-3 justify-content-md-center">
                 <Form.Label column>Enter password:</Form.Label>
                 <Col sm={6}>
-                  <Form.Control
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </Col>
               </Form.Group>
-              <Button
-                variant="light"
-                onClick={handleCreate}
-                size="lg"
-                className="mb-3"
-              >
+              <Button variant="light" onClick={handleCreate} size="lg" className="mb-3">
                 Submit
               </Button>
-              {createError && (
-                <Alert className="justify-center" variant="danger">
-                  {createError}
-                </Alert>
-              )}
+              {error && <Alert className="justify-center" variant="danger">{error}</Alert>}
             </Form>
           </Tab>
           <Tab eventKey="log" title="Log In">
             <Form>
               <Form.Group as={Row} className="mb-3 justify-content-md-center">
-                <Form.Label column sm={6}>
-                  Enter userID:
-                </Form.Label>
+                <Form.Label column sm={6}>Enter userID:</Form.Label>
                 <Col>
-                  <Form.Control
-                    value={userID}
-                    onChange={(e) => setUserID(e.target.value)}
-                  />
+                  <Form.Control value={userID} onChange={(e) => setUserID(e.target.value)} />
                 </Col>
               </Form.Group>
 
               <Form.Group as={Row} className="mb-3 justify-content-md-center">
                 <Form.Label column>Enter password:</Form.Label>
                 <Col sm={6}>
-                  <Form.Control
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
+                  <Form.Control type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 </Col>
               </Form.Group>
-              <Button
-                variant="light"
-                size="lg"
-                onClick={handleLog}
-                className="mb-3"
-              >
+              <Button variant="light" size="lg" onClick={handleLog} className="mb-3">
                 Submit
               </Button>
-              {loginError && (
-                <Alert className="justify-center" variant="danger">
-                  {loginError}
-                </Alert>
-              )}
+              {error && <Alert className="justify-center" variant="danger">{error}</Alert>}
             </Form>
           </Tab>
         </Tabs>

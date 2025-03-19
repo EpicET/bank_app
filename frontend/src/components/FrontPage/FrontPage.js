@@ -1,19 +1,20 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import AccountBox from "./AccountBox";
+import { UserContextProvider } from "../UserContext";
 import "./FrontPage.css";
 
 const FrontPage = () => {
 
   return (
-    
+    <UserContextProvider>
       <div className="FrontPage">
         <div className="FrontPage-header">
           <h1 className="md-3">Bank Application</h1>
         </div>
         <Container
           fluid
-          className="d-flex flex-column  justify-content-center"
+          className="d-flex flex-column justify-content-center"
           style={{ color: "white", minHeight: "95vh" }}
         >
           <Row className="justify-content-center">
@@ -21,7 +22,7 @@ const FrontPage = () => {
           </Row>
         </Container>
       </div>
-  
+    </UserContextProvider>
   );
 };
 
