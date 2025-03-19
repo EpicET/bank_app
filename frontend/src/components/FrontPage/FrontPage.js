@@ -1,12 +1,10 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
-import { UserContextProvider } from "../UserContext";
 import AccountBox from "./AccountBox";
 import "./FrontPage.css";
 
 const FrontPage = () => {
-  let userID = ""
-  let password = ""
+  // Removed unused variables userID and password
 
   return (
     
