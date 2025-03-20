@@ -25,7 +25,7 @@ export default function PieChart({ accounts }) {
           "rgba(40, 44, 52, 1)",
           "rgba(239, 196, 92, 1)",
           "rgba(112, 128, 144, 1)",
-          getRandomColor(),
+          getRandomColor(), // Leads to an endless loop
         ],
         hoverOffset: 4,
       },

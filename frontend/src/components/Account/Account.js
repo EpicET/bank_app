@@ -11,8 +11,7 @@ import CloseAccount from "./CloseAccount";
 import LineChart from "./LineChart"
 
 const Account = () => {
-  const { userID } = useParams();
-  const { accountID } = useParams();
+  const { accountID, userID } = useParams();
   const [account, setAccount] = useState([]);
   const [type, setType] = useState("");
   const [balance, setBalance] = useState();
@@ -41,18 +40,19 @@ const Account = () => {
     setAccount(updatedAccount);
   };
 
+  // Fetch account data
   useEffect(() => {
     api
       .get(`/api/v1/user/${userID}/${accountID}`)
       .then((response) => {
         setAccount(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.error(error);
       });
   }, [accountID, userID]);
 
+  // Update account state when account is fetched && when transaction is made
   useEffect(() => {
     if (account) {
       Object.entries(account).forEach(([key, value]) => {
@@ -63,7 +63,6 @@ const Account = () => {
           setBalance(value);
         } else if (key === "transHistory") {
           setTransHistory(value);
-          console.log(transHistory);
         }
       });
     }
@@ -82,6 +81,7 @@ const Account = () => {
       </Navbar>
       <Container>
         <Row className="mb-3"></Row>
+        {/* Account Info */}
         <Row className="mb-3">
           <h1>
             {type} {accountID}
@@ -122,7 +122,7 @@ const Account = () => {
               </Card.Body>
             </Card>
           </Col>
-
+          {/* Account Actions */}
           <Col sm={5}>
             <Card border="dark" style={{ width: "30rem" }}>
               <Card.Header

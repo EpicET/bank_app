@@ -2,13 +2,16 @@ import React from "react";
 import { Accordion, Button, Card, ListGroup } from "react-bootstrap";
 import { useAccordionButton } from "react-bootstrap/AccordionButton";
 
-export default function OpenAccount({ openAcc }) {
+export default function OpenAccount({ openAcc, setError, setUser}) {
   function CustomToggle({ children, eventKey }) {
-    const decoratedOnClick = useAccordionButton(eventKey, () =>
-      console.log("It worked!")
-    );
+    const showAcc = useAccordionButton(eventKey, () => { 
+      if(eventKey === "0") {
+        setError(null);
+      }
+    });
+    
     return (
-      <Button variant="dark" onClick={decoratedOnClick} className="mb-3">
+      <Button variant="dark" onClick={showAcc} className="mb-3">
         {" "}
         {children}
       </Button>

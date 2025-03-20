@@ -90,6 +90,16 @@ public class AccountController {
         }
     }
 
+    @DeleteMapping(path = "{accountID}/close")
+    public ResponseEntity<String> deleteAccount(@PathVariable("accountID") int accountID) {
+        try {
+            accountServices.deleteAccount(accountID);
+            return ResponseEntity.ok("Account closed successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred.");
+        }
+    }
+
     @DeleteMapping(path = "/closeAll")
     public ResponseEntity<String> deleteAllUserAccounts(@PathVariable("userID") String userID) {
         try {

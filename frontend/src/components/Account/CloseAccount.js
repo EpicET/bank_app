@@ -1,16 +1,14 @@
-/* eslint-disable react/react-in-jsx-scope */
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Button, Modal } from "react-bootstrap";
 import api from "../../api/axiosConfig";
 
-export default function DeleteAccount(props) {
+export default function DeleteAccount() {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const navigate = useNavigate();
-  const { accountID } = useParams();
-  const { userID } = useParams();
+  const { accountID, userID } = useParams();
 
   const closeAcc = (event) => {
     event.preventDefault();
