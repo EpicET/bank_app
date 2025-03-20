@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { UserContext } from "../UserContext";
+import { UserContext } from "../../UserContext";
 import { Alert, Button, Form, Tab, Tabs, Card, Col, Row } from "react-bootstrap";
 
 const AccountBox = () => {

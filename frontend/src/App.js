@@ -3,15 +3,18 @@ import { Routes, Route } from "react-router-dom";
 import FrontPage from "./components/FrontPage/FrontPage";
 import Home from "./components/Home/Home";
 import Account from "./components/Account/Account";
+import { UserContextProvider } from "./UserContext";
 
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/" element={<FrontPage />}></Route>
-        <Route path="/Home/:userID" element={<Home />}></Route>
-        <Route path="/:userID/:accountID" element={<Account />}></Route>
-      </Routes>
+      <UserContextProvider>
+        <Routes>
+          <Route path="/" element={<FrontPage />} />
+          <Route path="/home/:userID" element={<Home />} />
+          <Route path="/:userID/:accountID" element={<Account />} />
+        </Routes>
+      </UserContextProvider>
     </div>
   );
 }

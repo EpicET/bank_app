@@ -1,13 +1,12 @@
 import React from "react";
 import { Container, Row } from "react-bootstrap";
 import AccountBox from "./AccountBox";
-import { UserContextProvider } from "../UserContext";
 import "./FrontPage.css";
 
 const FrontPage = () => {
 
   return (
-    <UserContextProvider>
+  
       <div className="FrontPage">
         <div className="FrontPage-header">
           <h1 className="md-3">Bank Application</h1>
@@ -22,7 +21,7 @@ const FrontPage = () => {
           </Row>
         </Container>
       </div>
-    </UserContextProvider>
+  
   );
 };
 

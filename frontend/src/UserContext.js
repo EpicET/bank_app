@@ -1,11 +1,13 @@
 import React, { createContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../api/axiosConfig";
+import api from "./api/axiosConfig";
 
 export const UserContext = createContext();
 
 export const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  // console.log("UserContextProvider user:", user);
+  
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -13,7 +15,7 @@ export const UserContextProvider = ({ children }) => {
     try {
       const response = await api.get(`/api/v1/user/${userID}`);
       setUser(response.data);
-      console.log(response.data);
+      // console.log("Getting user:", response.data);
     } catch (error) {
       console.error(error);
     }
@@ -45,14 +47,12 @@ export const UserContextProvider = ({ children }) => {
     }
   };
 
-  
-
   const updateUser = (updatedUser) => {
     setUser(updatedUser);
   };
 
   return (
-    <UserContext.Provider value={{  user, login, register, updateUser, error }}>
+    <UserContext.Provider value={{ user, setUser, login, register, getUser, error }}>
       {children}
     </UserContext.Provider>
   );
