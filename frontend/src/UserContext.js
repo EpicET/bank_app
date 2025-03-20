@@ -15,7 +15,7 @@ export const UserContextProvider = ({ children }) => {
     try {
       const response = await api.get(`/api/v1/user/${userID}`);
       setUser(response.data);
-      // console.log("Getting user:", response.data);
+      console.log("Getting user:", response.data);
     } catch (error) {
       console.error(error);
     }
@@ -47,12 +47,13 @@ export const UserContextProvider = ({ children }) => {
     }
   };
 
+  // May have use for this later
   const updateUser = (updatedUser) => {
     setUser(updatedUser);
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser, login, register, getUser, error }}>
+    <UserContext.Provider value={{ user, setUser, login, register, getUser, updateUser, error }}>
       {children}
     </UserContext.Provider>
   );

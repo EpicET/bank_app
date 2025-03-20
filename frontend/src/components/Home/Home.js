@@ -11,7 +11,7 @@ import PieChart from "./PieChart";
 import { UserContext } from "../../UserContext";
 
 const Home = () => {
-  const { user, getUser, setUser} = useContext(UserContext)
+  const { user, getUser } = useContext(UserContext)
   const { userID } = useParams(); // This is the userID from the URL
   const [password, setPassword] = useState();
   const [accList, setAccList] = useState([]);
@@ -69,7 +69,7 @@ const Home = () => {
             </Card>
           </Col>
           <Col key={2}>
-            <Transfer userID={userID} setUser={ setUser} />
+            <Transfer />
           </Col>
           <Col key={3}>
             <Card style={{ width: "32rem" }} className="mb-2">

@@ -1,15 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Card, Col, Form, Row, Alert } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import api from "../../api/axiosConfig";
+import { UserContext } from "../../UserContext";
 
 export default function Transfer(props) {
-  const { user } = useParams();
+  const { userID } = useParams();
+  const { getUser, updateUser } = useContext(UserContext)
   const [amount, setAmount] = useState(0);
   const [accountID1, setAccountID1] = useState(0);
   const [accountID2, setAccountID2] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
   const handleTransferClick = (event) => {
     event.preventDefault();
@@ -21,18 +24,18 @@ export default function Transfer(props) {
 
     const transferAmmount = parseFloat(amount);
     setLoading(true);
+
     api
       .put(
-        `/api/v1/user/${user.userID}/${accountID1}/${accountID2}`,
+        `/api/v1/user/${userID}/${accountID1}/${accountID2}`,
         transferAmmount,
         { headers: { "Content-Type": "application/json" } }
       )
       .then((response) => {
-        console.log(response.data);
+        console.log(response.data); // response.data is a string
         setAmount(0);
-        props.updateUser(user);
         setError(null);
-
+        getUser(userID);
         setLoading(false);
       })
       .catch((error) => {
@@ -40,7 +43,10 @@ export default function Transfer(props) {
         setError("Transfer failed");
         setLoading(false);
       });
+    
+    
   };
+
   return (
     <div>
       <Card border="dark">
