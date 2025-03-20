@@ -51,7 +51,7 @@ export default function ProfileManage({ userID, password, ...props }) {
       </a>
       <Offcanvas show={show} onHide={handleClose} placement="end">
         <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+          <Offcanvas.Title>Profile</Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body>
           <ListGroup>
